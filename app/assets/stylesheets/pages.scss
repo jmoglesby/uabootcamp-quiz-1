@@ -1,0 +1,15 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.non-black {
+  font-family: Helvetica, sans-serif;
+  font-size: 5em;
+  color: gold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.767);
+}
