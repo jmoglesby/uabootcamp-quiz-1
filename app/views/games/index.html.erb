@@ -1,0 +1,39 @@
+<h1>7 Wonders: Game Tracker</h1>
+
+<div class="button-stack">
+  <%= link_to new_game_path do %>
+    <button>Create New Game</button>
+  <% end %>
+</div>
+
+<div>
+  <% @games.order(created_at: :desc).each do |game| %>
+    <%= link_to game_path(game) do %>
+      <div class="game-box">
+        <span class="game-date">
+          #<%= game.id %> - <%= game.created_at.strftime('%D') %>
+        </span>
+        <br/>
+        <p>Players: <%= game.number_of_players %></p>
+        <span>Expansions: </span>
+        <ul>
+          <% if game.leaders_expansion %>
+            <li>Leaders</li>
+          <% end %>
+          <% if game.cities_expansion %>
+            <li>Cities</li>
+          <% end %>
+          <% if game.armada_expansion %>
+            <li>Armada</li>
+          <% end %>
+          <% if game.great_projects_expansion %>
+            <li>Great Projects</li>
+          <% end %>
+          <% if game.babel_expansion %>
+            <li>Tower of Babel</li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %> <%# end link_to game_path(game) do %>
+  <% end %> <%# end @games.each do %>
+</div>

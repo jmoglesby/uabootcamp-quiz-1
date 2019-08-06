@@ -1,0 +1,17 @@
+ <div class="game-form-box"> 
+  <h1>Create a New Game</h1>
+
+  <%= simple_form_for @game do |f| %>
+    <%= f.input :number_of_players, required: true, default: 2 %>
+    <%= f.input :leaders_expansion, as: :boolean %>
+    <%= f.input :cities_expansion, as: :boolean %>
+    <%= f.input :armada_expansion, as: :boolean %>
+    <%= f.input :great_projects_expansion, as: :boolean %>
+    <%= f.input :babel_expansion, as: :boolean %>
+    <br/>
+    <%= f.button :submit %>
+    <%= link_to games_path do %>
+      <button>Cancel</button>
+    <% end %>
+  <% end %>
+</div>

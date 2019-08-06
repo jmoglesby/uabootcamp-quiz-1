@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_183933) do
+ActiveRecord::Schema.define(version: 2019_08_06_023412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,32 +31,33 @@ ActiveRecord::Schema.define(version: 2019_08_05_183933) do
   create_table "score_cards", force: :cascade do |t|
     t.integer "game_id"
     t.integer "user_id"
-    t.string "wonder"
-    t.integer "plus_one_victory_tokens"
-    t.integer "plus_three_victory_tokens"
-    t.integer "plus_five_victory_tokens"
-    t.integer "plus_seven_victory_tokens"
-    t.integer "minus_one_defeat_tokens"
-    t.integer "minus_two_defeat_tokens"
-    t.integer "minus_three_defeat_tokens"
-    t.integer "coin_total"
-    t.integer "debt_total"
-    t.integer "wonder_points"
-    t.integer "blue_points"
-    t.integer "yellow_points"
-    t.integer "black_points"
-    t.integer "purple_points"
-    t.integer "tablet_science_symbols"
-    t.integer "cog_science_symbols"
-    t.integer "compass_science_symbols"
-    t.integer "wildcard_science_symbols"
-    t.integer "leader_points"
-    t.integer "fleet_points"
-    t.integer "great_project_token_points"
-    t.integer "great_project_penalty_points"
-    t.integer "babel_tiles_played"
+    t.integer "plus_one_victory_tokens", default: 0
+    t.integer "plus_three_victory_tokens", default: 0
+    t.integer "plus_five_victory_tokens", default: 0
+    t.integer "plus_seven_victory_tokens", default: 0
+    t.integer "minus_one_defeat_tokens", default: 0
+    t.integer "minus_two_defeat_tokens", default: 0
+    t.integer "minus_three_defeat_tokens", default: 0
+    t.integer "coin_total", default: 0
+    t.integer "debt_total", default: 0
+    t.integer "wonder_points", default: 0
+    t.integer "blue_points", default: 0
+    t.integer "yellow_points", default: 0
+    t.integer "black_points", default: 0
+    t.integer "purple_points", default: 0
+    t.integer "tablet_science_symbols", default: 0
+    t.integer "cog_science_symbols", default: 0
+    t.integer "compass_science_symbols", default: 0
+    t.integer "wildcard_science_symbols", default: 0
+    t.integer "leader_points", default: 0
+    t.integer "fleet_points", default: 0
+    t.integer "great_project_token_points", default: 0
+    t.integer "great_project_penalty_points", default: 0
+    t.integer "babel_tiles_played", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_score"
+    t.integer "wonder"
     t.index ["game_id"], name: "index_score_cards_on_game_id"
     t.index ["user_id"], name: "index_score_cards_on_user_id"
   end

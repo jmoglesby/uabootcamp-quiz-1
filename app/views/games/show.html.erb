@@ -1,0 +1,45 @@
+<h1><%= link_to '◀︎', games_path, class: "decorated-link" %> Game #<%= @game.id %></h1>
+<div class="game-box">
+  <span class="game-date"><%= @game.created_at.strftime('%D') %></span>
+  <br/>
+  <p>Players: <%= @game.number_of_players %></p>
+  <span>Expansions:</span>
+  <ul>
+    <% if @game.leaders_expansion %>
+      <li>Leaders</li>
+    <% end %>
+    <% if @game.cities_expansion %>
+      <li>Cities</li>
+    <% end %>
+    <% if @game.armada_expansion %>
+      <li>Armada</li>
+    <% end %>
+    <% if @game.great_projects_expansion %>
+      <li>Great Projects</li>
+    <% end %>
+    <% if @game.babel_expansion %>
+      <li>Tower of Babel</li>
+    <% end %>
+  </ul>
+</div>
+<br/>
+<% if @game.open_for_score_submissions %>
+  <div class="button-stack">
+    <%= link_to new_game_score_card_path(@game) do %>
+      <button>Submit Score</button>
+    <% end %>
+  </div>
+<% end %>
+<br/>
+<% if @game.score_cards.any? %>
+  <h3>Scores</h3>
+  <% @game.score_cards.order(total_score: :desc, coin_total: :desc).each do |sc| %>
+    <div class="score-card-box">
+      <span><%= sc.user.email %></span>
+      <br/>
+      <span><%= sc.wonder %></span>
+      <br/>
+      <span>Score: <%= sc.total_score %> - <%=sc.coin_total %>g</span>
+    </div>
+  <% end %>
+<% end %>

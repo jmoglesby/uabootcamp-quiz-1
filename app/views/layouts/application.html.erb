@@ -16,6 +16,23 @@
     <% if alert.present? %>
       <p class="alert"><%= alert %></p>
     <% end %>
-    <%= yield %>
+    
+    <div class="main">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="footer-div">
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <button>Logout</button>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <button>Log In</button>
+          <% end %>
+        <% end %>
+      </div>
+    </footer>
   </body>
 </html>

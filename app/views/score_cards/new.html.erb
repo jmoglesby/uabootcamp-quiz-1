@@ -1,0 +1,52 @@
+<div class="score-card-form-box"> 
+  <h1>Total Your Points</h1>
+  <h4>Player: <%= current_user.email %></h4>
+  <br/>
+  <%= simple_form_for @score_card, url: game_score_cards_path(@game) do |f| %>
+    <%= f.input :wonder, collection: ScoreCard.wonders.keys %>
+    <%= f.input :plus_one_victory_tokens %>
+    <%= f.input :plus_three_victory_tokens %>
+    <%= f.input :plus_five_victory_tokens %>
+    <% if @game.armada_expansion %>
+      <%= f.input :plus_seven_victory_tokens %>
+    <% end %>
+    <%= f.input :minus_one_defeat_tokens %>
+    <% if @game.armada_expansion %>
+      <%= f.input :minus_two_defeat_tokens %>
+      <%= f.input :minus_three_defeat_tokens %>
+    <% end %>
+    <%= f.input :coin_total %>
+    <% if @game.cities_expansion || @game.armada_expansion %>
+      <%= f.input :debt_total %>
+    <% end %>
+    <%= f.input :wonder_points %>
+    <%= f.input :blue_points %>
+    <%= f.input :yellow_points %>
+    <% if @game.cities_expansion %>
+      <%= f.input :black_points %>
+    <% end %>
+    <%= f.input :purple_points %>
+    <%= f.input :tablet_science_symbols %>
+    <%= f.input :cog_science_symbols %>
+    <%= f.input :compass_science_symbols %>
+    <%= f.input :wildcard_science_symbols %>
+    <% if @game.leaders_expansion %>
+      <%= f.input :leader_points %>
+    <% end %>
+    <% if @game.armada_expansion %>
+      <%= f.input :fleet_points %>
+    <% end %>
+    <% if @game.great_projects_expansion %>
+      <%= f.input :great_project_token_points %>
+      <%= f.input :great_project_penalty_points %>
+    <% end %>
+    <% if @game.babel_expansion %>
+      <%= f.input :babel_tiles_played %>
+    <% end %>
+    <br/>
+    <%= f.submit 'Submit Your Score'%>
+    <%= link_to game_path(@game) do %>
+      <button>Cancel</button>
+    <% end %>
+  <% end %>
+</div>
